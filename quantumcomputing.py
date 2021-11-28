@@ -40,8 +40,8 @@ class QuantumCom_Vector:
         x = q[0].vector
         y = q[1].vector
 
-        v = self.tensorVector(x, y)
-        return list(np.dot(v, self.controlledx))
+        v = self.TensorProductVector(x, y)
+        return list(np.dot(v, self.controlledx1))
 
     #Measuring the qbit -> Getting the probability density of the wavefunction
     def measure(self, qbit):
@@ -334,11 +334,9 @@ q1 = qubit([0,1])
 q2 = qubit([1,0])
 q3 = qubit([1,0])
 
-q1_2 = qubit()
-q1_2.vector = qc.BellState([q1, q2])
+vq = visualizeQubit()
+vq.Bloch3D([q1.vector])
 
-QubitSystem = qubit(np.kron(q1_2.vector, q3))
-
-qc.entangledGate(QubitSystem, )
+QubitSystem = qubit(np.kron(q1_2.vector, q3.vector))
 
 
